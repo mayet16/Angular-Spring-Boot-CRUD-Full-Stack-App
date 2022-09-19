@@ -1,0 +1,31 @@
+<button (click)="gotocreate()" class="btn btn-primary">Add Student</button>
+
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h2>Student List</h2>
+      </div>
+      <div class="panel-body">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Firstname</th>
+              <th>Lastname</th>
+              <th>Email</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let student of students | async">
+              <td>{{student.firstName}}</td>
+              <td>{{student.lastName}}</td>
+              <td>{{student.email}}</td>
+              <td>
+                  <button (click)="updateStudent(student.id)" class="btn btn-primary">Update</button>
+                  <button (click)="studentDetail(student.id)" class="btn btn-info" style="margin-left: 10px">Details</button>
+                  <button (click)="deleteStudent(student.id)" class="btn btn-danger" style="margin-left: 10px">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
