@@ -1,0 +1,10 @@
+<div id="search-component">
+    <input #searchBox id="search-box" (input)="search(searchBox.value)"  placeholder="Search Students by name"/>
+    <ul class="search-result">
+      <li *ngFor="let student of students$ | async" >
+        <a routerLink="/student-detail/{{student.id}}">
+          {{student.firstName}}
+        </a>
+      </li>
+    </ul>
+  </div>

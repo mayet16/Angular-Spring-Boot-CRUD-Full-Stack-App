@@ -12,6 +12,8 @@ import { UpdateStudentComponent } from './update-student/update-student.componen
 import { StudentListComponent } from './student-list/student-list.component';
 import { StudentDetailsComponent } from './student-details/student-details.component';
 import { AppRoutingModule } from './app-routing.module';
+import { StudentSearchComponent } from './student-search/student-search.component';
+import { EmployeeSearchComponent } from './employee-search/employee-search.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { AppRoutingModule } from './app-routing.module';
     CreateStudentComponent,
     UpdateStudentComponent,
     StudentListComponent,
-    StudentDetailsComponent
+    StudentDetailsComponent,
+    StudentSearchComponent,
+    EmployeeSearchComponent
   ],
   imports: [
     BrowserModule,

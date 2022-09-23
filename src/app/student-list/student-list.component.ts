@@ -29,11 +29,13 @@ export class StudentListComponent implements OnInit {
   }
 
   deleteStudent(id: number){
+    if(confirm("Are you sure to delete ")) {
     this.studentService.deleteStudent(id).subscribe(data=>{
       console.log(data);
       this.getStudents();
     })
   }
+}
   gotocreate(){
     this.router.navigate(['add-stud']);
   }
