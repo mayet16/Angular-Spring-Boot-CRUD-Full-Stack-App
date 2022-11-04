@@ -1,18 +1,23 @@
-<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
-  <!-- Links -->
-  <ul class="navbar-nav">
-    <li class="nav-item">
-        <a routerLink="employees" class="nav-link" routerLinkActive="active">Employee Management</a>
-    </li>
-    <li class="nav-item">
-        <a routerLink="students" class="nav-link" routerLinkActive="active">Student Management</a>
-    </li>
-  </ul>
-</nav>
+<mat-toolbar color="primary">
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <a *ngIf="this.authService.isLoggedIn" routerLink="employees" class="nav-link" routerLinkActive="active">Employee Management</a>
+  <a *ngIf="this.authService.isLoggedIn" routerLink="students" class="nav-link" routerLinkActive="active">Student Management</a>
+  <!-- <span>{{title}}</span> -->
+  <span class="example-spacer"></span>
+  <button *ngIf="!this.authService.isLoggedIn" mat-raised-button  (click)="openDialog()" style="float: right;">Login</button>
+
+  <nav class="my-2 my-md-0 mr-md-3">
+    <a *ngIf="this.authService.isLoggedIn" class="p-2" routerLink="students" class="nav-link" routerLinkActive="active">User Profile</a>
+  </nav>
+  <a *ngIf="!this.authService.isLoggedIn" class="btn btn-outline-primary" routerLinkActive="active"
+    routerLinkActive="active" (click)="openSignupDialog()" style="color: white;" >Sign up</a>
+  <button (click)="logout()" *ngIf="this.authService.isLoggedIn" type="button" class="btn btn-danger">Logout</button>
+
+</mat-toolbar>
+
 <div class="container">
-   <br>
-  <h2 style="text-align: center;">{{title}}</h2>
-  <hr>   
   <div class="card">
     <div class="card-body">
   <router-outlet></router-outlet>
@@ -24,4 +29,4 @@
   <div class="container">
       <span>All Rights Reserved 2022 Hibret Bank S.C</span>
   </div>
-</footer>
+</footer> 

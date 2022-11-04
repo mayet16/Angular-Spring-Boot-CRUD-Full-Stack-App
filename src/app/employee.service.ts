@@ -15,23 +15,23 @@ export class EmployeeService {
   constructor(private http: HttpClient) { }
 
   getEmployee(id: number): Observable<any> {
-    return this.http.get(`${this.soapbaseurl}/${id}`);
+    return this.http.get(`${this.baseUrl}/${id}`);
   }
 
   createEmployee(employee: Object): Observable<Object> {
-    return this.http.post(`${this.soapbaseurl}`, employee);
+    return this.http.post(`${this.baseUrl}`, employee);
   }
 
   updateEmployee(id: number, value: any): Observable<Object> {
-    return this.http.put(`${this.soapbaseurl}/${id}`, value);
+    return this.http.put(`${this.baseUrl}/${id}`, value);
   }
 
   deleteEmployee(id: number): Observable<any> {
-    return this.http.delete(`${this.soapbaseurl}/${id}`, { responseType: 'text' });
+    return this.http.delete(`${this.baseUrl}/${id}`, { responseType: 'text' });
   }
 
   getEmployeesList(): Observable<any> {
-    return this.http.get(`${this.soapbaseurl}`);
+    return this.http.get(`${this.baseUrl}`);
   }
 
   /* GET Employee whose name contains search term */
@@ -41,7 +41,7 @@ export class EmployeeService {
       return of([]);
     }
 
-    return this.http.get<Employee[]>(`${this.soapbaseurl}/filter?first-name=${term}`).pipe(
+    return this.http.get<Employee[]>(`${this.baseUrl}/filter?first-name=${term}`).pipe(
       tap(x => x.length ?
         console.log(`found Employees matching "${term}"`) :
         console.log(`no Employees matching "${term}"`)),

@@ -1,0 +1,24 @@
+<h3 mat-dialog-title>Please sign in</h3>
+<div mat-dialog-content style="width: 400px;">
+<form [formGroup]="loginForm">
+  
+  <mat-form-field appearance="outline">
+    <mat-label>Email</mat-label>
+    <input type="email" matInput placeholder="Email" [formControl]="emailId">
+    <mat-error *ngIf="emailId.invalid">Email is required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Password</mat-label>
+    <input type="password" matInput placeholder="Password" [formControl]="password">
+    <mat-error *ngIf="password.invalid">Password is required</mat-error>
+  </mat-form-field>
+
+</form>
+</div>
+<div mat-dialog-action [align]="'end'">
+  <button class="btn btn-success" (click)="loginUser()" style="margin-right: 5px;">Login</button>
+  <span>don't have account</span><a *ngIf="!this.authService.isLoggedIn" class="btn btn-outline-primary" routerLinkActive="active"
+  routerLinkActive="active" (click)="openSignupDialog()" style="color: rgb(17, 75, 141); margin-left: 10px;margin-right: 10px;" >Sign up</a>
+  <button mat-raised-button color="warn" mat-dialog-close style="margin-left: 25px;">Close</button>
+</div>

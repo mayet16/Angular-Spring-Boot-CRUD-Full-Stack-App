@@ -8,17 +8,21 @@ import { StudentDetailsComponent } from './student-details/student-details.compo
 import { CreateStudentComponent } from './create-student/create-student.component';
 import { StudentListComponent } from './student-list/student-list.component';
 import { UpdateStudentComponent } from './update-student/update-student.component';
-
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
+import { AuthGuardGuard } from './auth-guard.guard';
 const routes: Routes = [
-  { path: '', redirectTo: 'employees', pathMatch: 'full' },
-  { path: 'employees', component: EmployeeListComponent },
-  { path: 'add', component: CreateEmployeeComponent },
-  { path: 'update/:id', component: UpdateEmployeeComponent },
-  { path: 'details/:id', component: EmployeeDetailsComponent },
-  { path: 'students', component: StudentListComponent },
-  { path: 'add-stud', component: CreateStudentComponent },
-  { path: 'update-student/:id', component: UpdateStudentComponent },
-  { path: 'student-detail/:id', component: StudentDetailsComponent },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignupComponent },
+  { path: 'employees', component: EmployeeListComponent, canActivate: [AuthGuardGuard] },
+  { path: 'add', component: CreateEmployeeComponent , canActivate: [AuthGuardGuard] },
+  { path: 'update/:id', component: UpdateEmployeeComponent , canActivate: [AuthGuardGuard] },
+  { path: 'details/:id', component: EmployeeDetailsComponent , canActivate: [AuthGuardGuard] },
+  { path: 'students', component: StudentListComponent , canActivate: [AuthGuardGuard] },
+  { path: 'add-stud', component: CreateStudentComponent , canActivate: [AuthGuardGuard] },
+  { path: 'update-student/:id', component: UpdateStudentComponent , canActivate: [AuthGuardGuard] },
+  { path: 'student-detail/:id', component: StudentDetailsComponent , canActivate: [AuthGuardGuard] },
 ];
 
 @NgModule({

@@ -1,4 +1,33 @@
-<h3>Create Employee</h3>
+<h3 mat-dialog-title>Add Employee</h3>
+<div mat-dialog-content style="width: 400px;">
+<form [formGroup]="employeeform">
+  
+  <mat-form-field appearance="outline">
+    <mat-label>First Name</mat-label>
+    <input matInput placeholder="First Name" [formControl]="firstName">
+    <mat-error *ngIf="firstName.invalid">First Name is required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Last Name</mat-label>
+    <input matInput placeholder="Last Name"[formControl]="lastName">
+    <mat-error *ngIf="lastName.invalid">Last Name is required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Email</mat-label>
+    <input type="email" matInput placeholder="Email" [formControl]="emailId">
+    <mat-error *ngIf="emailId.invalid">Email is required</mat-error>
+  </mat-form-field>
+
+</form>
+</div>
+<div mat-dialog-action [align]="'end'">
+  <button class="btn btn-success" (click)="onSubmit()">{{actionbtn}}</button>
+  <button mat-raised-button color="warn" mat-dialog-close style="margin-left: 25px;">Close</button>
+</div>
+
+<!-- <h3>Create Employee</h3>
 <div [hidden]="submitted" style="width: 400px;">
   <form (ngSubmit)="onSubmit()">
     <div class="form-group">
@@ -22,5 +51,4 @@
 
 <div [hidden]="!submitted">
   <h4>You submitted successfully!</h4>
-  <!-- <button class="btn btn-success" (click)="newEmployee()">Add</button> -->
-</div>
+</div> -->
